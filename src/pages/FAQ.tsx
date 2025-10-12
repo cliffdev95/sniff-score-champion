@@ -1,4 +1,5 @@
 import Navigation from "@/components/Navigation";
+import BubbleBackground from "@/components/BubbleBackground";
 import { Card } from "@/components/ui/card";
 import {
   Accordion,
@@ -44,8 +45,10 @@ const faqs = [
 
 const FAQ = () => {
   return (
-    <div className="min-h-screen">
-      <Navigation />
+    <div className="min-h-screen relative">
+      <BubbleBackground />
+      <div className="relative z-10">
+        <Navigation />
       
       <div className="container mx-auto px-4 py-16">
         <div className="max-w-3xl mx-auto space-y-8">
@@ -83,6 +86,7 @@ const FAQ = () => {
             </p>
           </div>
         </div>
+      </div>
       </div>
     </div>
   );

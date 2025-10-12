@@ -1,5 +1,6 @@
 import Navigation from "@/components/Navigation";
 import SniffCalculator from "@/components/SniffCalculator";
+import BubbleBackground from "@/components/BubbleBackground";
 import { Button } from "@/components/ui/button";
 
 const Home = () => {
@@ -8,8 +9,10 @@ const Home = () => {
   };
 
   return (
-    <div className="min-h-screen">
-      <Navigation />
+    <div className="min-h-screen relative">
+      <BubbleBackground />
+      <div className="relative z-10">
+        <Navigation />
       
       {/* Hero Section */}
       <section className="container mx-auto px-4 py-20 text-center">
@@ -64,7 +67,9 @@ const Home = () => {
       <footer className="container mx-auto px-4 py-12 text-center text-muted-foreground">
         <p>Made with 🧼 and questionable humor</p>
         <p className="text-sm mt-2">Remember: Deodorant is not a shower replacement!</p>
+        <p className="text-xs mt-4 italic">No noses were harmed in the making of this website 🫧</p>
       </footer>
+      </div>
     </div>
   );
 };

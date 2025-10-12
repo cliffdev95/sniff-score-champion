@@ -1,4 +1,5 @@
 import Navigation from "@/components/Navigation";
+import BubbleBackground from "@/components/BubbleBackground";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -26,8 +27,10 @@ const Contact = () => {
   };
 
   return (
-    <div className="min-h-screen">
-      <Navigation />
+    <div className="min-h-screen relative">
+      <BubbleBackground />
+      <div className="relative z-10">
+        <Navigation />
       
       <div className="container mx-auto px-4 py-16">
         <div className="max-w-2xl mx-auto space-y-8">
@@ -105,6 +108,7 @@ const Contact = () => {
             </Card>
           </div>
         </div>
+      </div>
       </div>
     </div>
   );

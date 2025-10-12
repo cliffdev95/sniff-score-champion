@@ -11,52 +11,54 @@
 
 @layer base {
   :root {
-    /* Pastel Funk Palette */
-    --background: 220 30% 97%;
-    --foreground: 280 15% 25%;
+    /* Modern Playful Meme Palette */
+    --background: 200 100% 97%;
+    --foreground: 220 15% 20%;
 
     --card: 0 0% 100%;
-    --card-foreground: 280 15% 25%;
+    --card-foreground: 220 15% 20%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 280 15% 25%;
+    --popover-foreground: 220 15% 20%;
 
-    /* Mint Fresh Primary */
-    --primary: 158 64% 75%;
-    --primary-foreground: 280 15% 25%;
+    /* Sky Blue Primary */
+    --primary: 199 80% 85%;
+    --primary-foreground: 220 15% 20%;
     
-    /* Sunny Yellow Secondary */
-    --secondary: 48 95% 76%;
-    --secondary-foreground: 280 15% 25%;
+    /* Butter Yellow Secondary */
+    --secondary: 48 90% 85%;
+    --secondary-foreground: 220 15% 20%;
 
-    /* Lavender Muted */
-    --muted: 226 60% 92%;
-    --muted-foreground: 280 10% 45%;
+    /* Mint Green Accent */
+    --accent: 120 50% 88%;
+    --accent-foreground: 220 15% 20%;
 
-    /* Accent Gradient Colors */
-    --accent: 226 60% 88%;
-    --accent-foreground: 280 15% 25%;
+    /* Soft Pink Muted */
+    --muted: 0 60% 92%;
+    --muted-foreground: 220 10% 45%;
 
-    /* Stinky Alert Red */
-    --destructive: 0 84% 68%;
+    /* Coral Destructive */
+    --destructive: 0 75% 75%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 226 40% 88%;
-    --input: 226 40% 88%;
-    --ring: 158 64% 75%;
+    --border: 210 40% 90%;
+    --input: 210 40% 90%;
+    --ring: 199 80% 85%;
 
-    --radius: 1rem;
+    --radius: 1.5rem;
 
     /* Custom SniffScore Tokens */
-    --gradient-fresh: linear-gradient(135deg, hsl(158 64% 75%), hsl(48 95% 76%));
-    --gradient-funky: linear-gradient(135deg, hsl(48 95% 76%), hsl(26 95% 78%));
-    --gradient-stinky: linear-gradient(135deg, hsl(26 95% 78%), hsl(0 84% 68%));
-    --gradient-bg: linear-gradient(180deg, hsl(220 30% 97%), hsl(226 60% 92%));
+    --gradient-fresh: linear-gradient(135deg, hsl(199 80% 85%), hsl(120 50% 88%));
+    --gradient-funky: linear-gradient(135deg, hsl(48 90% 85%), hsl(30 90% 80%));
+    --gradient-stinky: linear-gradient(135deg, hsl(30 90% 80%), hsl(0 75% 75%));
+    --gradient-bg: linear-gradient(180deg, hsl(200 100% 97%), hsl(199 80% 95%));
     
-    --shadow-bubble: 0 8px 32px -8px hsl(158 64% 75% / 0.3);
-    --shadow-card: 0 4px 24px -4px hsl(280 15% 25% / 0.08);
+    --shadow-bubble: 0 10px 40px -10px hsl(199 80% 85% / 0.4);
+    --shadow-glow: 0 0 60px hsl(199 80% 85% / 0.3);
+    --shadow-card: 0 6px 30px -6px hsl(220 15% 20% / 0.1);
     
-    --transition-bouncy: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    --transition-bouncy: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
 }
 
@@ -92,11 +94,64 @@
     box-shadow: var(--shadow-bubble);
   }
   
+  .shadow-glow {
+    box-shadow: var(--shadow-glow);
+  }
+  
   .shadow-card {
     box-shadow: var(--shadow-card);
   }
   
   .transition-bouncy {
     transition: var(--transition-bouncy);
+  }
+  
+  .transition-smooth {
+    transition: var(--transition-smooth);
+  }
+  
+  .wobble {
+    animation: wobble 0.6s ease-in-out;
+  }
+  
+  .float {
+    animation: float 3s ease-in-out infinite;
+  }
+  
+  @keyframes wobble {
+    0%, 100% { transform: rotate(0deg); }
+    25% { transform: rotate(-5deg); }
+    75% { transform: rotate(5deg); }
+  }
+  
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+  }
+  
+  @keyframes bubble-rise {
+    0% { 
+      transform: translateY(100vh) scale(0);
+      opacity: 0;
+    }
+    10% {
+      opacity: 1;
+    }
+    90% {
+      opacity: 1;
+    }
+    100% { 
+      transform: translateY(-100vh) scale(1);
+      opacity: 0;
+    }
+  }
+  
+  .bubble {
+    position: fixed;
+    background: radial-gradient(circle at 30% 30%, hsl(199 80% 90% / 0.8), hsl(199 80% 85% / 0.4));
+    border-radius: 50%;
+    pointer-events: none;
+    animation: bubble-rise linear infinite;
+    box-shadow: inset 0 0 20px hsl(0 0% 100% / 0.3);
   }
 }

@@ -1,8 +1,10 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Slider } from "@/components/ui/slider";
 import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
-import { toast } from "sonner";
+import ShareModal from "@/components/ShareModal";
+import ScoreCard from "@/components/ScoreCard";
+import LoadingAnimation from "@/components/LoadingAnimation";
+import { useSoundEffects } from "@/hooks/useSoundEffects";
 
 interface Rating {
   level: string;
@@ -59,65 +61,105 @@ const getRating = (hours: number): Rating => {
 
 const SniffCalculator = () => {
   const [hours, setHours] = useState([24]);
+  const [isCalculating, setIsCalculating] = useState(false);
+  const [showResult, setShowResult] = useState(false);
+  const [shareModalOpen, setShareModalOpen] = useState(false);
+  const { playSound, isMuted, toggleMute } = useSoundEffects();
+  
   const rating = getRating(hours[0]);
 
-  const handleShare = () => {
-    const message = `My SniffScore: ${rating.level} ${rating.emoji}\nI haven't showered in ${hours[0]} hours! 😂\n\nCheck yours at SniffScore!`;
-    
-    if (navigator.share) {
-      navigator.share({
-        title: "My SniffScore",
-        text: message,
-      });
-    } else {
-      navigator.clipboard.writeText(message);
-      toast.success("Copied to clipboard! Share your funky score! 📋");
+  const handleSliderChange = (value: number[]) => {
+    setHours(value);
+    setShowResult(false);
+    setIsCalculating(true);
+  };
+
+  useEffect(() => {
+    if (isCalculating) {
+      const timer = setTimeout(() => {
+        setIsCalculating(false);
+        setShowResult(true);
+        playSound(rating.level);
+      }, 1500);
+      return () => clearTimeout(timer);
     }
+  }, [isCalculating, rating.level, playSound]);
+
+  const handleJustShowered = () => {
+    setHours([0]);
+    setShowResult(false);
+    setIsCalculating(true);
+  };
+
+  const handlePlaySound = () => {
+    playSound(rating.level);
   };
 
   return (
-    <Card className="p-8 rounded-3xl shadow-bubble border-4 border-primary/20 bg-card">
-      <div className="space-y-8">
+    <div className="space-y-8">
+      <div className="text-center space-y-4">
+        <h3 className="font-heading text-2xl mb-2">Hours Since Last Shower</h3>
+        <p className="text-6xl font-bold font-heading transition-smooth">{hours[0]}</p>
+      </div>
+
+      <Slider
+        value={hours}
+        onValueChange={handleSliderChange}
+        max={168}
+        step={1}
+        className="w-full"
+      />
+
+      {isCalculating && <LoadingAnimation />}
+
+      {showResult && !isCalculating && (
+        <div className="animate-scale-in">
+          <ScoreCard
+            hours={hours[0]}
+            rating={rating}
+            onShare={() => setShareModalOpen(true)}
+            onPlaySound={handlePlaySound}
+            isMuted={isMuted}
+            onToggleMute={toggleMute}
+          />
+        </div>
+      )}
+
+      {!showResult && !isCalculating && (
         <div className="text-center">
-          <h3 className="font-heading text-2xl mb-2">Hours Since Last Shower</h3>
-          <p className="text-6xl font-bold font-heading">{hours[0]}</p>
-        </div>
-
-        <Slider
-          value={hours}
-          onValueChange={setHours}
-          max={168}
-          step={1}
-          className="w-full"
-        />
-
-        <div className={`p-6 rounded-2xl ${rating.gradient} text-center transform transition-all duration-300 scale-100 hover:scale-105`}>
-          <div className="text-7xl mb-2">{rating.emoji}</div>
-          <h2 className="font-heading text-3xl mb-2 text-foreground">{rating.level}</h2>
-          <p className="text-lg text-foreground/90">{rating.message}</p>
-        </div>
-
-        <div className="flex gap-3 justify-center">
           <Button
-            onClick={() => setHours([0])}
+            onClick={() => {
+              setIsCalculating(true);
+            }}
+            size="lg"
+            className="rounded-full font-semibold transition-bouncy hover:scale-110 shadow-bubble text-xl px-8 py-6"
+          >
+            Calculate My SniffScore 🧼
+          </Button>
+        </div>
+      )}
+
+      {showResult && (
+        <div className="text-center">
+          <Button
+            onClick={handleJustShowered}
             variant="secondary"
             className="rounded-full font-semibold transition-bouncy hover:scale-105"
+            size="lg"
           >
             Just Showered! 🚿
           </Button>
-          <Button
-            onClick={handleShare}
-            className="rounded-full font-semibold transition-bouncy hover:scale-105"
-          >
-            Share My Score 📤
-          </Button>
         </div>
+      )}
 
-        <div className="text-center text-sm text-muted-foreground">
-          <p>✨ Powered by Totally Real SniffAI™ ✨</p>
-        </div>
-      </div>
-    </Card>
+      <ShareModal
+        open={shareModalOpen}
+        onOpenChange={setShareModalOpen}
+        hours={hours[0]}
+        level={rating.level}
+        emoji={rating.emoji}
+      />
+    </div>
   );
 };
 
