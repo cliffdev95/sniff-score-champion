@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { Slider } from "@/components/ui/slider";
 import { Button } from "@/components/ui/button";
-import ShareModal from "@/components/ShareModal";
-import ScoreCard from "@/components/ScoreCard";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 import LoadingAnimation from "@/components/LoadingAnimation";
-import { useSoundEffects } from "@/hooks/useSoundEffects";
 
 interface Rating {
   level: string;
@@ -60,105 +60,106 @@ const getRating = (hours: number): Rating => {
 };
 
 const SniffCalculator = () => {
+  const navigate = useNavigate();
   const [hours, setHours] = useState([24]);
+  const [username, setUsername] = useState("");
   const [isCalculating, setIsCalculating] = useState(false);
-  const [showResult, setShowResult] = useState(false);
-  const [shareModalOpen, setShareModalOpen] = useState(false);
-  const { playSound, isMuted, toggleMute } = useSoundEffects();
-  
-  const rating = getRating(hours[0]);
 
   const handleSliderChange = (value: number[]) => {
     setHours(value);
-    setShowResult(false);
+  };
+
+  const handleCalculate = () => {
     setIsCalculating(true);
   };
 
   useEffect(() => {
     if (isCalculating) {
       const timer = setTimeout(() => {
-        setIsCalculating(false);
-        setShowResult(true);
-        playSound(rating.level);
-      }, 1500);
+        const rating = getRating(hours[0]);
+        navigate("/result", {
+          state: {
+            hours: hours[0],
+            rating,
+            username: username || undefined
+          }
+        });
+      }, 2000);
       return () => clearTimeout(timer);
     }
-  }, [isCalculating, rating.level, playSound]);
-
-  const handleJustShowered = () => {
-    setHours([0]);
-    setShowResult(false);
-    setIsCalculating(true);
-  };
-
-  const handlePlaySound = () => {
-    playSound(rating.level);
-  };
+  }, [isCalculating, hours, username, navigate]);
 
   return (
-    <div className="space-y-8">
-      <div className="text-center space-y-4">
-        <h3 className="font-heading text-2xl mb-2">Hours Since Last Shower</h3>
-        <p className="text-6xl font-bold font-heading transition-smooth">{hours[0]}</p>
+    <div className="space-y-6 md:space-y-8">
+      {/* Username Input */}
+      <div className="space-y-3">
+        <Label htmlFor="username" className="text-lg md:text-xl font-heading">
+          Enter Your Name (Optional) 👤
+        </Label>
+        <Input
+          id="username"
+          type="text"
+          placeholder="Anonymous Funky Legend"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+          className="text-center text-lg md:text-xl font-semibold rounded-2xl border-2 border-primary/30 focus:border-primary shadow-bubble h-14"
+          maxLength={20}
+          disabled={isCalculating}
+        />
       </div>
 
-      <Slider
-        value={hours}
-        onValueChange={handleSliderChange}
-        max={168}
-        step={1}
-        className="w-full"
-      />
+      {/* Hours Input Section */}
+      <div className="space-y-4">
+        <div className="text-center space-y-2">
+          <Label className="text-xl md:text-2xl font-heading block">
+            ⏰ How Long Since Your Last Shower?
+          </Label>
+          <p className="text-sm md:text-base text-muted-foreground">
+            Be honest... we won't judge. Much. 😏
+          </p>
+        </div>
+
+        <div className="text-center space-y-2">
+          <p className="text-5xl md:text-7xl font-bold font-heading transition-smooth text-primary">
+            {hours[0]}
+          </p>
+          <p className="text-lg md:text-xl text-muted-foreground">
+            {hours[0] === 1 ? "hour" : "hours"}
+          </p>
+        </div>
+
+        <div className="px-4 md:px-8">
+          <Slider
+            value={hours}
+            onValueChange={handleSliderChange}
+            max={168}
+            step={1}
+            className="w-full"
+            disabled={isCalculating}
+          />
+          <div className="flex justify-between mt-2 text-xs md:text-sm text-muted-foreground">
+            <span>0h (Fresh!)</span>
+            <span>168h (Week of Funk)</span>
+          </div>
+        </div>
+      </div>
 
       {isCalculating && <LoadingAnimation />}
 
-      {showResult && !isCalculating && (
-        <div className="animate-scale-in">
-          <ScoreCard
-            hours={hours[0]}
-            rating={rating}
-            onShare={() => setShareModalOpen(true)}
-            onPlaySound={handlePlaySound}
-            isMuted={isMuted}
-            onToggleMute={toggleMute}
-          />
-        </div>
-      )}
-
-      {!showResult && !isCalculating && (
-        <div className="text-center">
+      {!isCalculating && (
+        <div className="text-center pt-4">
           <Button
-            onClick={() => {
-              setIsCalculating(true);
-            }}
+            onClick={handleCalculate}
             size="lg"
-            className="rounded-full font-semibold transition-bouncy hover:scale-110 shadow-bubble text-xl px-8 py-6"
+            className="w-full sm:w-auto rounded-full font-semibold transition-bouncy hover:scale-110 shadow-bubble text-lg md:text-2xl px-8 md:px-12 py-6 md:py-8 h-auto"
           >
             Calculate My SniffScore 🧼
           </Button>
+          <p className="text-xs md:text-sm text-muted-foreground mt-4 italic">
+            Brace yourself for the truth... 🫣
+          </p>
         </div>
       )}
-
-      {showResult && (
-        <div className="text-center">
-          <Button
-            onClick={handleJustShowered}
-            variant="secondary"
-            className="rounded-full font-semibold transition-bouncy hover:scale-105"
-            size="lg"
-          >
-            Just Showered! 🚿
-          </Button>
-        </div>
-      )}
-
-      <ShareModal
-        open={shareModalOpen}
-        onOpenChange={setShareModalOpen}
-        hours={hours[0]}
-        level={rating.level}
-        emoji={rating.emoji}
-      />
     </div>
   );
 };
