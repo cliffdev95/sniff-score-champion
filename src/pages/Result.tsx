@@ -1,14 +1,14 @@
 import { useLocation, useNavigate } from "react-router-dom";
 import { useEffect, useState, useRef } from "react";
 import Navigation from "@/components/Navigation";
-import BubbleBackground from "@/components/BubbleBackground";
+import VibeBackground from "@/components/VibeBackground";
 import ScoreCard from "@/components/ScoreCard";
 import ShareModal from "@/components/ShareModal";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { useSoundEffects } from "@/hooks/useSoundEffects";
 import { toast } from "sonner";
-import { Home, Download, Trophy } from "lucide-react";
+import { Home, Download, Trophy, Share2 } from "lucide-react";
 
 interface Rating {
   level: string;
@@ -106,40 +106,40 @@ const Result = () => {
   };
 
   return (
-    <div className="min-h-screen relative">
-      <BubbleBackground />
+    <div className="min-h-screen relative pb-20 md:pb-8">
+      <VibeBackground level={state.rating.level} />
       <div className="relative z-10">
         <Navigation />
         
-        <section className="container mx-auto px-4 py-8 md:py-12">
-          <div className="max-w-4xl mx-auto space-y-6 md:space-y-8">
+        <section className="container mx-auto px-4 py-6 md:py-12">
+          <div className="max-w-4xl mx-auto space-y-4 md:space-y-8">
             {/* Header */}
-            <div className="text-center space-y-4 animate-fade-in">
-              <div className="text-6xl md:text-8xl animate-bounce">
+            <div className="text-center space-y-3 md:space-y-4 animate-fade-in">
+              <div className="text-7xl md:text-9xl animate-bounce drop-shadow-2xl">
                 {state.rating.emoji}
               </div>
-              <h1 className="font-heading text-4xl md:text-6xl">
+              <h1 className="font-heading text-3xl sm:text-5xl md:text-6xl leading-tight px-2">
                 Your Official SniffScore!
               </h1>
-              <p className="text-lg md:text-xl text-muted-foreground">
+              <p className="text-base sm:text-lg md:text-xl text-foreground/80 font-medium px-4">
                 The results are in... and they're funky! 🧪
               </p>
             </div>
 
             {/* Ranking Card */}
-            <Card className="p-6 md:p-8 rounded-3xl shadow-bubble border-4 border-accent/30 bg-gradient-to-br from-accent/20 to-background animate-scale-in">
-              <div className="text-center space-y-4">
-                <div className="text-5xl md:text-7xl">
+            <Card className="p-5 md:p-8 rounded-3xl shadow-bubble border-4 border-accent/30 bg-gradient-to-br from-accent/30 to-background/90 backdrop-blur-sm animate-scale-in">
+              <div className="text-center space-y-3 md:space-y-4">
+                <div className="text-6xl md:text-8xl animate-wobble drop-shadow-lg">
                   {getTrophyEmoji(ranking)}
                 </div>
-                <h2 className="font-heading text-3xl md:text-4xl">
+                <h2 className="font-heading text-4xl sm:text-5xl md:text-6xl bg-gradient-fresh bg-clip-text text-transparent">
                   Rank #{ranking}
                 </h2>
-                <p className="text-xl md:text-2xl text-muted-foreground">
+                <p className="text-lg sm:text-xl md:text-2xl font-semibold px-2">
                   You're the {ranking}{getRankingSuffix(ranking)} funkiest out of {totalPlayers} players!
                 </p>
-                <div className="flex items-center justify-center gap-2 text-sm md:text-base text-muted-foreground">
-                  <Trophy className="h-4 w-4" />
+                <div className="flex items-center justify-center gap-2 text-sm sm:text-base font-medium bg-accent/20 rounded-full px-4 py-2 mx-auto max-w-fit">
+                  <Trophy className="h-5 w-5 text-primary" />
                   <span>
                     {ranking <= 3 ? "Top 3 Stink Champion! 🎉" : 
                      ranking <= 10 ? "Top 10 Odor Elite! ⭐" : 
@@ -197,29 +197,42 @@ const Result = () => {
             </Card>
 
             {/* Action Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4">
+              <Button
+                onClick={() => setShareModalOpen(true)}
+                size="lg"
+                className="w-full rounded-full font-semibold transition-bouncy hover:scale-105 shadow-glow text-base sm:text-lg"
+              >
+                <Share2 className="mr-2 h-5 w-5" />
+                Share Score
+              </Button>
               <Button
                 onClick={handleDownloadCertificate}
                 size="lg"
-                className="w-full sm:w-auto rounded-full font-semibold transition-bouncy hover:scale-105 shadow-bubble"
+                variant="secondary"
+                className="w-full rounded-full font-semibold transition-bouncy hover:scale-105 text-base sm:text-lg"
               >
                 <Download className="mr-2 h-5 w-5" />
-                Download Certificate
+                Certificate
               </Button>
               <Button
                 onClick={() => navigate("/leaderboard")}
                 size="lg"
-                variant="secondary"
-                className="w-full sm:w-auto rounded-full font-semibold transition-bouncy hover:scale-105"
+                variant="outline"
+                className="w-full rounded-full font-semibold transition-bouncy hover:scale-105 text-base sm:text-lg"
               >
                 <Trophy className="mr-2 h-5 w-5" />
-                View Leaderboard
+                Leaderboard
               </Button>
+            </div>
+
+            {/* Play Again Button */}
+            <div className="text-center">
               <Button
                 onClick={() => navigate("/")}
                 size="lg"
-                variant="outline"
-                className="w-full sm:w-auto rounded-full font-semibold transition-bouncy hover:scale-105"
+                variant="ghost"
+                className="rounded-full font-semibold transition-bouncy hover:scale-105 text-base sm:text-lg"
               >
                 <Home className="mr-2 h-5 w-5" />
                 Try Again
@@ -227,10 +240,10 @@ const Result = () => {
             </div>
 
             {/* Goofy Footer Message */}
-            <div className="text-center space-y-2 text-sm text-muted-foreground animate-fade-in">
-              <p>🎭 Congratulations on your achievement!</p>
+            <div className="text-center space-y-2 text-xs sm:text-sm text-muted-foreground animate-fade-in px-4">
+              <p className="font-medium">🎭 Congratulations on your achievement!</p>
               <p className="italic">Your friends are probably concerned. Show them this certificate to ease their worries.</p>
-              <p className="text-xs">Disclaimer: Showering is still recommended by 9 out of 10 dentists. And everyone else.</p>
+              <p className="text-[10px] sm:text-xs">Disclaimer: Showering is still recommended by 9 out of 10 dentists. And everyone else.</p>
             </div>
           </div>
         </section>

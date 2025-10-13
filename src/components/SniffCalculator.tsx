@@ -93,8 +93,9 @@ const SniffCalculator = () => {
     <div className="space-y-6 md:space-y-8">
       {/* Username Input */}
       <div className="space-y-3">
-        <Label htmlFor="username" className="text-lg md:text-xl font-heading">
-          Enter Your Name (Optional) 👤
+        <Label htmlFor="username" className="text-base sm:text-lg md:text-xl font-heading flex items-center gap-2">
+          <span className="text-xl">👤</span>
+          Enter Your Name (Optional)
         </Label>
         <Input
           id="username"
@@ -102,7 +103,7 @@ const SniffCalculator = () => {
           placeholder="Anonymous Funky Legend"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
-          className="text-center text-lg md:text-xl font-semibold rounded-2xl border-2 border-primary/30 focus:border-primary shadow-bubble h-14"
+          className="text-center text-base sm:text-lg md:text-xl font-semibold rounded-2xl border-2 border-primary/30 focus:border-primary shadow-bubble h-12 sm:h-14"
           maxLength={20}
           disabled={isCalculating}
         />
@@ -111,24 +112,24 @@ const SniffCalculator = () => {
       {/* Hours Input Section */}
       <div className="space-y-4">
         <div className="text-center space-y-2">
-          <Label className="text-xl md:text-2xl font-heading block">
+          <Label className="text-lg sm:text-xl md:text-2xl font-heading block">
             ⏰ How Long Since Your Last Shower?
           </Label>
-          <p className="text-sm md:text-base text-muted-foreground">
+          <p className="text-sm sm:text-base text-muted-foreground px-4">
             Be honest... we won't judge. Much. 😏
           </p>
         </div>
 
         <div className="text-center space-y-2">
-          <p className="text-5xl md:text-7xl font-bold font-heading transition-smooth text-primary">
+          <p className="text-5xl sm:text-6xl md:text-7xl font-bold font-heading transition-smooth text-primary drop-shadow-lg">
             {hours[0]}
           </p>
-          <p className="text-lg md:text-xl text-muted-foreground">
+          <p className="text-base sm:text-lg md:text-xl text-muted-foreground font-medium">
             {hours[0] === 1 ? "hour" : "hours"}
           </p>
         </div>
 
-        <div className="px-4 md:px-8">
+        <div className="px-2 sm:px-4 md:px-8">
           <Slider
             value={hours}
             onValueChange={handleSliderChange}
@@ -137,9 +138,9 @@ const SniffCalculator = () => {
             className="w-full"
             disabled={isCalculating}
           />
-          <div className="flex justify-between mt-2 text-xs md:text-sm text-muted-foreground">
-            <span>0h (Fresh!)</span>
-            <span>168h (Week of Funk)</span>
+          <div className="flex justify-between mt-3 text-xs sm:text-sm text-muted-foreground font-medium px-2">
+            <span>0h 🌸</span>
+            <span>168h ☢️</span>
           </div>
         </div>
       </div>
@@ -151,11 +152,11 @@ const SniffCalculator = () => {
           <Button
             onClick={handleCalculate}
             size="lg"
-            className="w-full sm:w-auto rounded-full font-semibold transition-bouncy hover:scale-110 shadow-bubble text-lg md:text-2xl px-8 md:px-12 py-6 md:py-8 h-auto"
+            className="w-full sm:w-auto rounded-full font-semibold transition-bouncy hover:scale-110 shadow-glow text-base sm:text-lg md:text-2xl px-6 sm:px-8 md:px-12 py-5 sm:py-6 md:py-8 h-auto"
           >
-            Calculate My SniffScore 🧼
+            🧼 Calculate My SniffScore
           </Button>
-          <p className="text-xs md:text-sm text-muted-foreground mt-4 italic">
+          <p className="text-xs sm:text-sm text-muted-foreground mt-4 italic px-4">
             Brace yourself for the truth... 🫣
           </p>
         </div>

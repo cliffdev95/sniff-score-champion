@@ -9,6 +9,7 @@ import Leaderboard from "./pages/Leaderboard";
 import FAQ from "./pages/FAQ";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
+import FloatingActionButton from "./components/FloatingActionButton";
 
 const queryClient = new QueryClient();
 
@@ -18,6 +19,7 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
+        <FloatingActionButton />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/result" element={<Result />} />

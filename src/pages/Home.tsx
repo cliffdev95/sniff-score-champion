@@ -9,7 +9,7 @@ const Home = () => {
   };
 
   return (
-    <div className="min-h-screen relative">
+    <div className="min-h-screen relative pb-20 md:pb-8">
       <BubbleBackground />
       <div className="relative z-10">
         <Navigation />
