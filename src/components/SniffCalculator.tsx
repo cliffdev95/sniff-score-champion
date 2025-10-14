@@ -129,7 +129,7 @@ const SniffCalculator = () => {
           </p>
         </div>
 
-        <div className="px-2 sm:px-4 md:px-8">
+        <div className="px-2 sm:px-4 md:px-8 space-y-4">
           <Slider
             value={hours}
             onValueChange={handleSliderChange}
@@ -141,6 +141,37 @@ const SniffCalculator = () => {
           <div className="flex justify-between mt-3 text-xs sm:text-sm text-muted-foreground font-medium px-2">
             <span>0h 🌸</span>
             <span>168h ☢️</span>
+          </div>
+          
+          {/* Visual Funk Scale */}
+          <div className="bg-card/50 rounded-2xl p-4 border-2 border-primary/10">
+            <p className="text-xs font-semibold text-center mb-3 text-muted-foreground">THE FUNK SCALE</p>
+            <div className="space-y-2 text-xs sm:text-sm">
+              <div className="flex items-center gap-2 p-2 rounded-lg bg-gradient-fresh">
+                <span className="text-lg">🧼</span>
+                <span className="font-medium">0-12h: Fresh as a daisy!</span>
+              </div>
+              <div className="flex items-center gap-2 p-2 rounded-lg bg-gradient-fresh opacity-80">
+                <span className="text-lg">☁️</span>
+                <span className="font-medium">13-24h: Citrus Cloud</span>
+              </div>
+              <div className="flex items-center gap-2 p-2 rounded-lg bg-gradient-funky">
+                <span className="text-lg">🤔</span>
+                <span className="font-medium">25-48h: Questionable Aura</span>
+              </div>
+              <div className="flex items-center gap-2 p-2 rounded-lg bg-gradient-funky opacity-90">
+                <span className="text-lg">🦠</span>
+                <span className="font-medium">49-72h: Air Quality Alert</span>
+              </div>
+              <div className="flex items-center gap-2 p-2 rounded-lg bg-gradient-stinky">
+                <span className="text-lg">🚨</span>
+                <span className="font-medium">73-120h: Biohazard Zone</span>
+              </div>
+              <div className="flex items-center gap-2 p-2 rounded-lg bg-gradient-stinky opacity-90">
+                <span className="text-lg">☢️</span>
+                <span className="font-medium">121h+: Nuclear Stank Legend</span>
+              </div>
+            </div>
           </div>
         </div>
       </div>

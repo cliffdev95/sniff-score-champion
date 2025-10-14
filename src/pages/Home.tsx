@@ -17,20 +17,58 @@ const Home = () => {
       {/* Hero Section */}
       <section className="container mx-auto px-4 py-12 md:py-20 text-center">
         <div className="max-w-4xl mx-auto space-y-6 md:space-y-8">
-          <div className="text-6xl md:text-8xl animate-bounce">🧼</div>
+          <div className="text-6xl md:text-8xl animate-bounce">👃💦</div>
           <h1 className="font-heading text-4xl md:text-6xl lg:text-7xl leading-tight px-2">
             How Funky Are You Today?
           </h1>
-          <p className="text-lg md:text-2xl text-muted-foreground px-4">
-            Get your SniffScore before your friends do!
-          </p>
+          <div className="max-w-2xl mx-auto space-y-3 px-4">
+            <p className="text-lg md:text-2xl font-semibold text-foreground">
+              SniffScore rates how funky you are based on when you last showered 💦👃
+            </p>
+            <p className="text-base md:text-xl text-muted-foreground">
+              The longer you've gone without a shower, the higher (and smellier) your score!
+            </p>
+            <p className="text-sm md:text-base text-muted-foreground italic">
+              No actual sniffing involved... yet 😜
+            </p>
+          </div>
           <Button
             onClick={scrollToCalculator}
             size="lg"
             className="rounded-full text-lg md:text-xl px-6 md:px-8 py-5 md:py-6 font-semibold shadow-bubble transition-bouncy hover:scale-110 w-full sm:w-auto"
           >
-            Find My SniffScore 🧼
+            Calculate My Funk 🧼
           </Button>
+        </div>
+      </section>
+
+      {/* How It Works Section */}
+      <section className="container mx-auto px-4 py-8 md:py-12">
+        <div className="max-w-3xl mx-auto">
+          <h2 className="font-heading text-3xl md:text-4xl text-center mb-8">How It Works</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="text-center p-6 rounded-2xl bg-card border-2 border-primary/20 shadow-card">
+              <div className="text-5xl mb-4">1️⃣</div>
+              <h3 className="font-heading text-xl mb-2">Enter Details</h3>
+              <p className="text-sm text-muted-foreground">
+                Tell us when you last showered (be honest! 😏)
+              </p>
+            </div>
+            <div className="text-center p-6 rounded-2xl bg-card border-2 border-secondary/20 shadow-card">
+              <div className="text-5xl mb-4">2️⃣</div>
+              <h3 className="font-heading text-xl mb-2">Calculate Funk</h3>
+              <p className="text-sm text-muted-foreground">
+                Hit "Calculate My Funk" and watch the magic happen ✨
+              </p>
+            </div>
+            <div className="text-center p-6 rounded-2xl bg-card border-2 border-accent/20 shadow-card">
+              <div className="text-5xl mb-4">3️⃣</div>
+              <h3 className="font-heading text-xl mb-2">Brag or Hide</h3>
+              <p className="text-sm text-muted-foreground">
+                Share your score... or keep it a secret. Your call 🤐
+              </p>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -40,7 +78,7 @@ const Home = () => {
           <div className="text-center space-y-4 px-2">
             <h2 className="font-heading text-3xl md:text-4xl">Your Funk Level Calculator</h2>
             <p className="text-base md:text-lg text-muted-foreground">
-              Enter your name (optional), adjust the slider, and get a totally scientific rating from 'Fresh as a Daisy 🌸' to 'Nuclear Stank ☢️'.
+              Slide to reveal your destiny... from 'Fresh as a Daisy 🌸' to 'Nuclear Stank ☢️'
             </p>
           </div>
           

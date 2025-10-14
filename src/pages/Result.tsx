@@ -197,33 +197,38 @@ const Result = () => {
             </Card>
 
             {/* Action Buttons */}
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4">
-              <Button
-                onClick={() => setShareModalOpen(true)}
-                size="lg"
-                className="w-full rounded-full font-semibold transition-bouncy hover:scale-105 shadow-glow text-base sm:text-lg"
-              >
-                <Share2 className="mr-2 h-5 w-5" />
-                Share Score
-              </Button>
-              <Button
-                onClick={handleDownloadCertificate}
-                size="lg"
-                variant="secondary"
-                className="w-full rounded-full font-semibold transition-bouncy hover:scale-105 text-base sm:text-lg"
-              >
-                <Download className="mr-2 h-5 w-5" />
-                Certificate
-              </Button>
-              <Button
-                onClick={() => navigate("/leaderboard")}
-                size="lg"
-                variant="outline"
-                className="w-full rounded-full font-semibold transition-bouncy hover:scale-105 text-base sm:text-lg"
-              >
-                <Trophy className="mr-2 h-5 w-5" />
-                Leaderboard
-              </Button>
+            <div className="space-y-4">
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4">
+                <Button
+                  onClick={() => setShareModalOpen(true)}
+                  size="lg"
+                  className="w-full rounded-full font-semibold transition-bouncy hover:scale-105 shadow-glow text-base sm:text-lg"
+                >
+                  <Share2 className="mr-2 h-5 w-5" />
+                  Share My Funk
+                </Button>
+                <Button
+                  onClick={handleDownloadCertificate}
+                  size="lg"
+                  variant="secondary"
+                  className="w-full rounded-full font-semibold transition-bouncy hover:scale-105 text-base sm:text-lg"
+                >
+                  <Download className="mr-2 h-5 w-5" />
+                  Certificate
+                </Button>
+                <Button
+                  onClick={() => navigate("/leaderboard")}
+                  size="lg"
+                  variant="outline"
+                  className="w-full rounded-full font-semibold transition-bouncy hover:scale-105 text-base sm:text-lg"
+                >
+                  <Trophy className="mr-2 h-5 w-5" />
+                  Hall of Funk
+                </Button>
+              </div>
+              <p className="text-center text-xs sm:text-sm text-muted-foreground italic px-4">
+                Brag or hide your score. Your call 🤐
+              </p>
             </div>
 
             {/* Play Again Button */}

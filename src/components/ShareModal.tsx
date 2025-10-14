@@ -12,7 +12,7 @@ interface ShareModalProps {
 }
 
 const ShareModal = ({ open, onOpenChange, hours, level, emoji }: ShareModalProps) => {
-  const shareText = `My SniffScore: ${level} ${emoji}\nI haven't showered in ${hours} hours! 😂\n\nCheck yours at SniffScore!`;
+  const shareText = `I haven't showered in ${hours} hours! My SniffScore: "${level}" ${emoji} 💨\n\nApparently I'm a walking air freshener's nightmare 😷😅\n\nCheck your funk level at SniffScore!`;
   const shareUrl = window.location.origin;
 
   const handleTwitterShare = () => {

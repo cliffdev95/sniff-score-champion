@@ -36,7 +36,9 @@ const Leaderboard = () => {
     const stored = localStorage.getItem("sniffLeaderboard");
     if (stored) {
       const data = JSON.parse(stored);
-      setLeaderboardData(data);
+      // Sort by hours descending (highest/funkiest first)
+      const sorted = data.sort((a: LeaderboardEntry, b: LeaderboardEntry) => b.hours - a.hours);
+      setLeaderboardData(sorted);
     }
   };
 
@@ -54,20 +56,14 @@ const Leaderboard = () => {
     return "";
   };
 
-  const getRankTitle = (rank: number) => {
-    const titles = [
-      "Emperor of Odor",
-      "Duke of Dirt",
-      "Baroness of B.O.",
-      "Knight of the Unwashed",
-      "Apprentice of Aroma",
-      "Squire of Scent",
-      "Count of Crusty",
-      "Marquis of Musk",
-      "Viscount of Vapor",
-      "Earl of Essence"
-    ];
-    return titles[rank - 1] || "Certified Funk Master";
+  const getRankTitle = (entry: LeaderboardEntry) => {
+    const hours = entry.hours;
+    if (hours >= 121) return "☢️ Nuclear Stank Legend";
+    if (hours >= 73) return "🚨 Biohazard Overlord";
+    if (hours >= 49) return "🦠 Funk Emperor";
+    if (hours >= 25) return "🤔 Odour Baron";
+    if (hours >= 13) return "☁️ Mild Musk Knight";
+    return "🧼 Fresh Champion";
   };
 
   const formatTimeAgo = (timestamp: string) => {
@@ -95,9 +91,12 @@ const Leaderboard = () => {
         <div className="max-w-6xl mx-auto space-y-6 md:space-y-8">
           <div className="text-center space-y-4">
             <div className="text-5xl md:text-7xl mb-4">🏆</div>
-            <h1 className="font-heading text-4xl md:text-6xl">Leaderboard of Legends</h1>
+            <h1 className="font-heading text-4xl md:text-6xl">Hall of Funk</h1>
             <p className="text-lg md:text-xl text-muted-foreground">
-              The funkiest (and freshest) people on the internet
+              Ranked by funkiness (highest scores = longest without shower)
+            </p>
+            <p className="text-sm md:text-base text-muted-foreground italic">
+              🏆 Top spot = Most hours unwashed. Wear it proudly... or don't 😅
             </p>
             <div className="flex flex-col sm:flex-row gap-3 justify-center items-center pt-4">
               <Button
@@ -154,10 +153,9 @@ const Leaderboard = () => {
                     </TableRow>
                   </TableHeader>
                   <TableBody>
-                    {leaderboardData.map((entry, index) => {
+                  {leaderboardData.map((entry, index) => {
                       const rank = index + 1;
                       const rankEmoji = getRankEmoji(rank);
-                      const rankTitle = getRankTitle(rank);
                       
                       return (
                         <TableRow 
@@ -171,12 +169,12 @@ const Leaderboard = () => {
                             <span className="hidden sm:inline">#{rank}</span>
                             <span className="sm:hidden">{rank}</span>
                           </TableCell>
-                          <TableCell>
-                            <div className="min-w-[120px]">
-                              <p className="font-semibold text-sm md:text-base">{entry.username}</p>
-                              <p className="text-xs text-muted-foreground italic hidden md:block">{rankTitle}</p>
-                            </div>
-                          </TableCell>
+                  <TableCell>
+                    <div className="min-w-[120px]">
+                      <p className="font-semibold text-sm md:text-base">{entry.username}</p>
+                      <p className="text-xs text-muted-foreground italic hidden md:block">{getRankTitle(entry)}</p>
+                    </div>
+                  </TableCell>
                           <TableCell className="hidden sm:table-cell">
                             <span className="font-semibold text-sm md:text-base">{entry.hours}h</span>
                           </TableCell>
@@ -202,7 +200,7 @@ const Leaderboard = () => {
             <Card className="p-6 rounded-2xl bg-accent/20 text-center">
               <div className="text-3xl md:text-4xl mb-2">👑</div>
               <p className="text-sm md:text-base text-muted-foreground">
-                Top rank = Most hours without shower
+                #1 = Longest without shower. Congrats... we think? 😬
               </p>
             </Card>
             <Card className="p-6 rounded-2xl bg-accent/20 text-center">
