@@ -198,36 +198,27 @@ const Result = () => {
 
             {/* Action Buttons */}
             <div className="space-y-4">
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                 <Button
                   onClick={() => setShareModalOpen(true)}
                   size="lg"
-                  className="w-full rounded-full font-semibold transition-bouncy hover:scale-105 shadow-glow text-base sm:text-lg"
+                  className="w-full rounded-full font-semibold transition-bouncy hover:scale-110 shadow-glow text-base sm:text-lg py-6"
                 >
                   <Share2 className="mr-2 h-5 w-5" />
                   Share My Funk
                 </Button>
                 <Button
-                  onClick={handleDownloadCertificate}
-                  size="lg"
-                  variant="secondary"
-                  className="w-full rounded-full font-semibold transition-bouncy hover:scale-105 text-base sm:text-lg"
-                >
-                  <Download className="mr-2 h-5 w-5" />
-                  Certificate
-                </Button>
-                <Button
                   onClick={() => navigate("/leaderboard")}
                   size="lg"
-                  variant="outline"
-                  className="w-full rounded-full font-semibold transition-bouncy hover:scale-105 text-base sm:text-lg"
+                  variant="secondary"
+                  className="w-full rounded-full font-semibold transition-bouncy hover:scale-110 text-base sm:text-lg py-6"
                 >
                   <Trophy className="mr-2 h-5 w-5" />
                   Hall of Funk
                 </Button>
               </div>
               <p className="text-center text-xs sm:text-sm text-muted-foreground italic px-4">
-                Brag or hide your score. Your call 🤐
+                Share your glory (or shame) with the world 🌍
               </p>
             </div>
 
@@ -236,11 +227,11 @@ const Result = () => {
               <Button
                 onClick={() => navigate("/")}
                 size="lg"
-                variant="ghost"
-                className="rounded-full font-semibold transition-bouncy hover:scale-105 text-base sm:text-lg"
+                variant="outline"
+                className="rounded-full font-bold transition-bouncy hover:scale-110 text-base sm:text-xl px-8 py-6 border-2 hover:border-primary"
               >
-                <Home className="mr-2 h-5 w-5" />
-                Try Again
+                <Home className="mr-2 h-6 w-6" />
+                Take Test Again
               </Button>
             </div>
 

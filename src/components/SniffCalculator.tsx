@@ -293,32 +293,32 @@ const SniffCalculator = () => {
           </div>
           
           {/* Visual Funk Scale */}
-          <div className="bg-card/50 rounded-2xl p-4 border-2 border-primary/10">
-            <p className="text-xs font-semibold text-center mb-3 text-muted-foreground">THE FUNK SCALE</p>
+          <div className="bg-gradient-to-br from-card/80 to-muted/50 rounded-3xl p-4 md:p-6 border-2 border-primary/10 shadow-card">
+            <p className="text-xs font-bold text-center mb-4 text-primary uppercase tracking-wider">⚡ The Funk Scale ⚡</p>
             <div className="space-y-2 text-xs sm:text-sm">
-              <div className="flex items-center gap-2 p-2 rounded-lg bg-gradient-fresh">
-                <span className="text-lg">🧼</span>
-                <span className="font-medium">0-12h: Fresh as a daisy!</span>
+              <div className="flex items-center gap-2 p-3 rounded-xl bg-gradient-fresh hover:scale-105 transition-smooth shadow-sm">
+                <span className="text-xl">🧼</span>
+                <span className="font-semibold">0-12h: Fresh as a daisy!</span>
               </div>
-              <div className="flex items-center gap-2 p-2 rounded-lg bg-gradient-fresh opacity-80">
-                <span className="text-lg">☁️</span>
-                <span className="font-medium">13-24h: Citrus Cloud</span>
+              <div className="flex items-center gap-2 p-3 rounded-xl bg-gradient-fresh opacity-90 hover:scale-105 transition-smooth shadow-sm">
+                <span className="text-xl">☁️</span>
+                <span className="font-semibold">13-24h: Citrus Cloud</span>
               </div>
-              <div className="flex items-center gap-2 p-2 rounded-lg bg-gradient-funky">
-                <span className="text-lg">🤔</span>
-                <span className="font-medium">25-48h: Questionable Aura</span>
+              <div className="flex items-center gap-2 p-3 rounded-xl bg-gradient-funky hover:scale-105 transition-smooth shadow-sm">
+                <span className="text-xl">🤔</span>
+                <span className="font-semibold">25-48h: Questionable Aura</span>
               </div>
-              <div className="flex items-center gap-2 p-2 rounded-lg bg-gradient-funky opacity-90">
-                <span className="text-lg">🦠</span>
-                <span className="font-medium">49-72h: Air Quality Alert</span>
+              <div className="flex items-center gap-2 p-3 rounded-xl bg-gradient-funky opacity-95 hover:scale-105 transition-smooth shadow-sm">
+                <span className="text-xl">🦠</span>
+                <span className="font-semibold">49-72h: Air Quality Alert</span>
               </div>
-              <div className="flex items-center gap-2 p-2 rounded-lg bg-gradient-stinky">
-                <span className="text-lg">🚨</span>
-                <span className="font-medium">73-120h: Biohazard Zone</span>
+              <div className="flex items-center gap-2 p-3 rounded-xl bg-gradient-stinky hover:scale-105 transition-smooth shadow-sm">
+                <span className="text-xl">🚨</span>
+                <span className="font-semibold">73-120h: Biohazard Zone</span>
               </div>
-              <div className="flex items-center gap-2 p-2 rounded-lg bg-gradient-stinky opacity-90">
-                <span className="text-lg">☢️</span>
-                <span className="font-medium">121h+: Nuclear Stank Legend</span>
+              <div className="flex items-center gap-2 p-3 rounded-xl bg-gradient-stinky opacity-95 hover:scale-105 transition-smooth shadow-sm">
+                <span className="text-xl">☢️</span>
+                <span className="font-semibold">121h+: Nuclear Stank Legend</span>
               </div>
             </div>
           </div>
@@ -328,15 +328,15 @@ const SniffCalculator = () => {
       {isCalculating && <LoadingAnimation />}
 
       {!isCalculating && (
-        <div className="text-center pt-4">
+        <div className="text-center pt-6">
           <Button
             onClick={handleCalculate}
             size="lg"
-            className="w-full sm:w-auto rounded-full font-semibold transition-bouncy hover:scale-110 shadow-glow text-base sm:text-lg md:text-2xl px-6 sm:px-8 md:px-12 py-5 sm:py-6 md:py-8 h-auto"
+            className="w-full sm:w-auto rounded-full font-bold transition-bouncy hover:scale-110 shadow-glow text-lg md:text-2xl px-8 md:px-16 py-6 md:py-8 h-auto pulse-glow"
           >
             🧼 Calculate My SniffScore
           </Button>
-          <p className="text-xs sm:text-sm text-muted-foreground mt-4 italic px-4">
+          <p className="text-xs sm:text-sm text-muted-foreground mt-6 italic px-4">
             Brace yourself for the truth... 🫣
           </p>
         </div>
