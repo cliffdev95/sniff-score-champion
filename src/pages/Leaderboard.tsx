@@ -36,7 +36,9 @@ const Leaderboard = () => {
     const stored = localStorage.getItem("sniffLeaderboard");
     if (stored) {
       const data = JSON.parse(stored);
-      setLeaderboardData(data);
+      // Sort by hours descending (highest/funkiest first)
+      const sorted = data.sort((a: LeaderboardEntry, b: LeaderboardEntry) => b.hours - a.hours);
+      setLeaderboardData(sorted);
     }
   };
 
@@ -54,20 +56,20 @@ const Leaderboard = () => {
     return "";
   };
 
-  const getRankTitle = (rank: number) => {
-    const titles = [
-      "Emperor of Odor",
-      "Duke of Dirt",
-      "Baroness of B.O.",
-      "Knight of the Unwashed",
-      "Apprentice of Aroma",
-      "Squire of Scent",
-      "Count of Crusty",
-      "Marquis of Musk",
-      "Viscount of Vapor",
-      "Earl of Essence"
-    ];
-    return titles[rank - 1] || "Certified Funk Master";
+  const getRankTitle = (entry: LeaderboardEntry) => {
+    const hours = entry.hours;
+    if (hours >= 121) return { title: "Nuclear Stank Legend", badge: "☢️", color: "text-destructive" };
+    if (hours >= 73) return { title: "Biohazard Overlord", badge: "🚨", color: "text-orange-500" };
+    if (hours >= 49) return { title: "Funk Emperor", badge: "🦠", color: "text-yellow-600" };
+    if (hours >= 25) return { title: "Odour Baron", badge: "🤔", color: "text-yellow-500" };
+    if (hours >= 13) return { title: "Mild Musk Knight", badge: "☁️", color: "text-blue-400" };
+    return { title: "Fresh Champion", badge: "🧼", color: "text-primary" };
+  };
+
+  const getBadgeAnimation = (rank: number) => {
+    if (rank === 1) return "animate-bounce";
+    if (rank <= 3) return "animate-pulse";
+    return "";
   };
 
   const formatTimeAgo = (timestamp: string) => {
@@ -93,17 +95,20 @@ const Leaderboard = () => {
       
       <div className="container mx-auto px-4 py-8 md:py-16">
         <div className="max-w-6xl mx-auto space-y-6 md:space-y-8">
-          <div className="text-center space-y-4">
-            <div className="text-5xl md:text-7xl mb-4">🏆</div>
-            <h1 className="font-heading text-4xl md:text-6xl">Leaderboard of Legends</h1>
-            <p className="text-lg md:text-xl text-muted-foreground">
-              The funkiest (and freshest) people on the internet
+          <div className="text-center space-y-4 animate-fade-in">
+            <div className="text-5xl md:text-7xl mb-4 animate-bounce">🏆</div>
+            <h1 className="font-heading text-4xl md:text-6xl bg-gradient-fresh bg-clip-text text-transparent">Hall of Funk</h1>
+            <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto px-4">
+              The official leaderboard of legendary odors. Highest scores = longest without shower.
+            </p>
+            <p className="text-sm md:text-base text-muted-foreground italic px-4">
+              🏆 Being #1 isn't always a flex... but it's definitely memorable 😅
             </p>
             <div className="flex flex-col sm:flex-row gap-3 justify-center items-center pt-4">
               <Button
                 onClick={loadLeaderboard}
                 variant="secondary"
-                className="rounded-full font-semibold transition-bouncy hover:scale-105"
+                className="rounded-full font-semibold transition-bouncy hover:scale-110 shadow-bubble"
                 size="lg"
               >
                 <RefreshCw className="mr-2 h-4 w-4" />
@@ -113,7 +118,7 @@ const Leaderboard = () => {
                 <Button
                   onClick={clearLeaderboard}
                   variant="outline"
-                  className="rounded-full font-semibold transition-bouncy hover:scale-105"
+                  className="rounded-full font-semibold transition-bouncy hover:scale-110 border-2"
                   size="lg"
                 >
                   <Trash2 className="mr-2 h-4 w-4" />
@@ -124,24 +129,24 @@ const Leaderboard = () => {
           </div>
 
           {leaderboardData.length === 0 ? (
-            <Card className="p-12 md:p-16 rounded-3xl shadow-bubble border-4 border-primary/20 text-center">
+            <Card className="p-12 md:p-16 rounded-3xl shadow-glow border-4 border-primary/20 text-center animate-scale-in">
               <div className="space-y-4">
-                <div className="text-6xl md:text-8xl">🤷</div>
+                <div className="text-6xl md:text-8xl animate-pulse">🤷</div>
                 <h2 className="font-heading text-2xl md:text-3xl">No Funky Legends Yet!</h2>
-                <p className="text-muted-foreground text-base md:text-lg">
-                  Be the first to calculate your SniffScore and claim your spot on the leaderboard!
+                <p className="text-muted-foreground text-base md:text-lg max-w-md mx-auto">
+                  Be the first brave soul to calculate your SniffScore and claim eternal glory on the leaderboard!
                 </p>
                 <Button
                   onClick={() => window.location.href = "/"}
-                  className="rounded-full font-semibold transition-bouncy hover:scale-105 mt-4"
+                  className="rounded-full font-bold transition-bouncy hover:scale-110 mt-6 shadow-glow px-8 py-6 text-lg"
                   size="lg"
                 >
-                  Calculate My Score
+                  🚿 Start My Sniff Test
                 </Button>
               </div>
             </Card>
           ) : (
-            <Card className="p-4 md:p-6 rounded-3xl shadow-bubble border-4 border-primary/20 overflow-hidden">
+            <Card className="p-4 md:p-6 rounded-3xl shadow-glow border-4 border-primary/20 overflow-hidden animate-scale-in">
               <div className="overflow-x-auto">
                 <Table>
                   <TableHeader>
@@ -154,10 +159,9 @@ const Leaderboard = () => {
                     </TableRow>
                   </TableHeader>
                   <TableBody>
-                    {leaderboardData.map((entry, index) => {
+                  {leaderboardData.map((entry, index) => {
                       const rank = index + 1;
                       const rankEmoji = getRankEmoji(rank);
-                      const rankTitle = getRankTitle(rank);
                       
                       return (
                         <TableRow 
@@ -171,18 +175,20 @@ const Leaderboard = () => {
                             <span className="hidden sm:inline">#{rank}</span>
                             <span className="sm:hidden">{rank}</span>
                           </TableCell>
-                          <TableCell>
-                            <div className="min-w-[120px]">
-                              <p className="font-semibold text-sm md:text-base">{entry.username}</p>
-                              <p className="text-xs text-muted-foreground italic hidden md:block">{rankTitle}</p>
-                            </div>
-                          </TableCell>
+                  <TableCell>
+                    <div className="min-w-[120px]">
+                      <p className="font-semibold text-sm md:text-base">{entry.username}</p>
+                      <p className={`text-xs italic hidden md:block ${getRankTitle(entry).color}`}>
+                        {getRankTitle(entry).badge} {getRankTitle(entry).title}
+                      </p>
+                    </div>
+                  </TableCell>
                           <TableCell className="hidden sm:table-cell">
                             <span className="font-semibold text-sm md:text-base">{entry.hours}h</span>
                           </TableCell>
                           <TableCell>
                             <div className="min-w-[100px]">
-                              <span className="text-xl md:text-2xl">{entry.emoji}</span>
+                              <span className={`text-xl md:text-2xl ${getBadgeAnimation(rank)}`}>{entry.emoji}</span>
                               <p className="font-semibold text-xs md:text-sm hidden lg:block">{entry.level}</p>
                             </div>
                           </TableCell>
@@ -198,37 +204,40 @@ const Leaderboard = () => {
             </Card>
           )}
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <Card className="p-6 rounded-2xl bg-accent/20 text-center">
-              <div className="text-3xl md:text-4xl mb-2">👑</div>
-              <p className="text-sm md:text-base text-muted-foreground">
-                Top rank = Most hours without shower
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
+            <Card className="p-6 md:p-8 rounded-3xl bg-gradient-to-br from-primary/10 to-primary/5 text-center shadow-bubble hover:scale-105 transition-smooth border-2 border-primary/20">
+              <div className="text-4xl md:text-5xl mb-3">👑</div>
+              <p className="text-sm md:text-base text-foreground font-medium">
+                #1 = Longest without shower. Legendary status achieved! 😬
               </p>
             </Card>
-            <Card className="p-6 rounded-2xl bg-accent/20 text-center">
-              <div className="text-3xl md:text-4xl mb-2">🏃‍♂️</div>
-              <p className="text-sm md:text-base text-muted-foreground">
-                Leaderboard updates in real-time
+            <Card className="p-6 md:p-8 rounded-3xl bg-gradient-to-br from-secondary/10 to-secondary/5 text-center shadow-bubble hover:scale-105 transition-smooth border-2 border-secondary/20">
+              <div className="text-4xl md:text-5xl mb-3">⚡</div>
+              <p className="text-sm md:text-base text-foreground font-medium">
+                Live rankings update automatically with each new test
               </p>
             </Card>
-            <Card className="p-6 rounded-2xl bg-accent/20 text-center">
-              <div className="text-3xl md:text-4xl mb-2">💡</div>
-              <p className="text-sm md:text-base text-muted-foreground">
-                Being #1 isn't always a flex...
+            <Card className="p-6 md:p-8 rounded-3xl bg-gradient-to-br from-accent/20 to-accent/10 text-center shadow-bubble hover:scale-105 transition-smooth border-2 border-accent/30">
+              <div className="text-4xl md:text-5xl mb-3">🎯</div>
+              <p className="text-sm md:text-base text-foreground font-medium">
+                Compete with friends for the funkiest (or freshest) score
               </p>
             </Card>
           </div>
 
-          <div className="text-center p-4 md:p-6 rounded-2xl bg-gradient-funky">
-            <p className="text-base md:text-lg font-semibold">
-              🚿 Ready to claim your throne of funk?
+          <div className="text-center p-6 md:p-10 rounded-3xl bg-gradient-funky shadow-glow border-2 border-secondary/30">
+            <p className="text-lg md:text-2xl font-heading mb-4">
+              🚿 Ready to Claim Your Throne of Funk?
+            </p>
+            <p className="text-sm md:text-base text-foreground/80 mb-6 max-w-md mx-auto">
+              Take the test and see where you rank among the legends!
             </p>
             <Button
               onClick={() => window.location.href = "/"}
-              className="mt-4 rounded-full font-semibold transition-bouncy hover:scale-105"
+              className="rounded-full font-bold transition-bouncy hover:scale-110 shadow-glow px-8 py-6 text-lg"
               size="lg"
             >
-              <Trophy className="mr-2 h-5 w-5" />
+              <Trophy className="mr-2 h-6 w-6" />
               Calculate My SniffScore
             </Button>
           </div>

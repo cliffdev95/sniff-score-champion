@@ -1,7 +1,7 @@
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { Home, Trophy, HelpCircle, Mail, Menu, Sparkles } from "lucide-react";
+import { Home, Trophy, HelpCircle, Mail, Menu, Sparkles, Info, Shield } from "lucide-react";
 import { useState } from "react";
 
 const Navigation = () => {
@@ -12,6 +12,8 @@ const Navigation = () => {
     { path: "/", label: "Home", icon: Home, emoji: "🏠" },
     { path: "/leaderboard", label: "Leaderboard", icon: Trophy, emoji: "🏆" },
     { path: "/faq", label: "FAQ", icon: HelpCircle, emoji: "❓" },
+    { path: "/about", label: "About", icon: Info, emoji: "ℹ️" },
+    { path: "/privacy", label: "Privacy", icon: Shield, emoji: "🔒" },
     { path: "/contact", label: "Contact", icon: Mail, emoji: "📤" },
   ];
 

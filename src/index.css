@@ -11,53 +11,53 @@
 
 @layer base {
   :root {
-    /* Modern Playful Meme Palette */
-    --background: 200 100% 97%;
-    --foreground: 220 15% 20%;
+    /* Fresh Scent-Inspired Palette */
+    --background: 160 60% 98%;
+    --foreground: 160 20% 15%;
 
     --card: 0 0% 100%;
-    --card-foreground: 220 15% 20%;
+    --card-foreground: 160 20% 15%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 220 15% 20%;
+    --popover-foreground: 160 20% 15%;
 
-    /* Sky Blue Primary */
-    --primary: 199 80% 85%;
-    --primary-foreground: 220 15% 20%;
+    /* Minty Green Primary */
+    --primary: 160 70% 50%;
+    --primary-foreground: 0 0% 100%;
     
-    /* Butter Yellow Secondary */
-    --secondary: 48 90% 85%;
-    --secondary-foreground: 220 15% 20%;
+    /* Warm Yellow Secondary */
+    --secondary: 45 95% 65%;
+    --secondary-foreground: 45 20% 20%;
 
-    /* Mint Green Accent */
-    --accent: 120 50% 88%;
-    --accent-foreground: 220 15% 20%;
+    /* Light Purple Accent */
+    --accent: 270 60% 85%;
+    --accent-foreground: 270 20% 25%;
 
-    /* Soft Pink Muted */
-    --muted: 0 60% 92%;
-    --muted-foreground: 220 10% 45%;
+    /* Soft Muted */
+    --muted: 160 30% 94%;
+    --muted-foreground: 160 10% 45%;
 
     /* Coral Destructive */
-    --destructive: 0 75% 75%;
+    --destructive: 0 75% 65%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 210 40% 90%;
-    --input: 210 40% 90%;
-    --ring: 199 80% 85%;
+    --border: 160 30% 88%;
+    --input: 160 30% 88%;
+    --ring: 160 70% 50%;
 
     --radius: 1.5rem;
 
-    /* Custom SniffScore Tokens */
-    --gradient-fresh: linear-gradient(135deg, hsl(199 80% 85%), hsl(120 50% 88%));
-    --gradient-funky: linear-gradient(135deg, hsl(48 90% 85%), hsl(30 90% 80%));
-    --gradient-stinky: linear-gradient(135deg, hsl(30 90% 80%), hsl(0 75% 75%));
-    --gradient-bg: linear-gradient(180deg, hsl(200 100% 97%), hsl(199 80% 95%));
+    /* Enhanced SniffScore Gradients */
+    --gradient-fresh: linear-gradient(135deg, hsl(160 70% 50%), hsl(180 60% 60%));
+    --gradient-funky: linear-gradient(135deg, hsl(45 95% 65%), hsl(35 90% 60%));
+    --gradient-stinky: linear-gradient(135deg, hsl(15 85% 60%), hsl(0 75% 65%));
+    --gradient-hero: linear-gradient(180deg, hsl(160 60% 98%), hsl(180 50% 95%));
     
-    --shadow-bubble: 0 10px 40px -10px hsl(199 80% 85% / 0.4);
-    --shadow-glow: 0 0 60px hsl(199 80% 85% / 0.3);
-    --shadow-card: 0 6px 30px -6px hsl(220 15% 20% / 0.1);
+    --shadow-bubble: 0 12px 50px -15px hsl(160 70% 50% / 0.3);
+    --shadow-glow: 0 0 80px hsl(160 70% 50% / 0.25);
+    --shadow-card: 0 8px 40px -8px hsl(160 20% 15% / 0.08);
     
-    --transition-bouncy: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    --transition-bouncy: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
 }
@@ -146,12 +146,30 @@
     }
   }
   
+  @keyframes sparkle {
+    0%, 100% { opacity: 0; transform: scale(0) rotate(0deg); }
+    50% { opacity: 1; transform: scale(1) rotate(180deg); }
+  }
+  
+  @keyframes pulse-glow {
+    0%, 100% { box-shadow: 0 0 20px hsl(160 70% 50% / 0.3); }
+    50% { box-shadow: 0 0 40px hsl(160 70% 50% / 0.6); }
+  }
+  
   .bubble {
     position: fixed;
-    background: radial-gradient(circle at 30% 30%, hsl(199 80% 90% / 0.8), hsl(199 80% 85% / 0.4));
+    background: radial-gradient(circle at 30% 30%, hsl(160 70% 60% / 0.6), hsl(180 60% 50% / 0.3));
     border-radius: 50%;
     pointer-events: none;
     animation: bubble-rise linear infinite;
-    box-shadow: inset 0 0 20px hsl(0 0% 100% / 0.3);
+    box-shadow: inset 0 0 25px hsl(0 0% 100% / 0.4);
+  }
+  
+  .sparkle-effect {
+    animation: sparkle 2s ease-in-out infinite;
+  }
+  
+  .pulse-glow {
+    animation: pulse-glow 3s ease-in-out infinite;
   }
 }
