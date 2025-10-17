@@ -27,10 +27,10 @@ const Home = () => {
                 👃✨
               </div>
               <h1 className="font-heading text-4xl sm:text-5xl md:text-7xl leading-tight px-2 bg-gradient-fresh bg-clip-text text-transparent">
-                Rate Your Funk.<br />Face Your Fate.
+                Check Your Freshness.<br />Have a Little Fun.
               </h1>
               <p className="text-lg sm:text-xl md:text-2xl text-foreground/80 font-semibold max-w-2xl mx-auto px-4">
-                SniffCheck uses science (and sass) to rate your body odor based on when you last showered.
+                SniffCheck uses playful algorithms (and a sprinkle of humor) to estimate freshness based on when you last showered.
               </p>
             </div>
 
@@ -58,7 +58,7 @@ const Home = () => {
                 <div className="text-4xl md:text-5xl">🧪</div>
                 <h3 className="font-heading text-xl md:text-2xl">AI-Powered</h3>
                 <p className="text-sm md:text-base text-muted-foreground">
-                  Our totally real AI sniffs your vibes and calculates your exact funk level.
+                  Our playful AI gives a lighthearted estimate of your freshness — just for fun.
                 </p>
               </div>
             </Card>
@@ -68,7 +68,7 @@ const Home = () => {
                 <div className="text-4xl md:text-5xl">🏆</div>
                 <h3 className="font-heading text-xl md:text-2xl">Compete</h3>
                 <p className="text-sm md:text-base text-muted-foreground">
-                  Climb the leaderboard and prove you're the funkiest (or freshest) in the game.
+                  Climb the leaderboard and see how you rank among friends.
                 </p>
               </div>
             </Card>
@@ -125,7 +125,7 @@ const Home = () => {
                 <TrendingUp className="w-8 h-8 md:w-10 md:h-10 mx-auto text-accent-foreground" />
                 <h3 className="font-heading text-lg md:text-xl">Get Roasted</h3>
                 <p className="text-sm md:text-base text-muted-foreground">
-                  Receive your official SniffScore, ranking, and certificate of funkiness.
+                  Receive your SniffScore, ranking, and a playful certificate.
                 </p>
               </div>
             </div>
@@ -157,7 +157,7 @@ const Home = () => {
                 <Shield className="w-12 h-12 md:w-16 md:h-16 mx-auto text-foreground" />
                 <h2 className="font-heading text-2xl md:text-4xl">Advanced AI Sniff Technology™</h2>
                 <p className="text-base md:text-lg max-w-2xl mx-auto">
-                  Powered by proprietary odor-detection algorithms and a sprinkle of comedy, SniffCheck delivers results you can trust (sort of). Your data stays private—we only judge your hygiene, not your privacy.
+                  Powered by playful algorithms and a sprinkle of comedy, SniffCheck delivers results for entertainment (not advice). Your data stays private.
                 </p>
                 <p className="text-sm md:text-base text-muted-foreground italic">
                   * Not actually AI. Definitely actually judgemental.

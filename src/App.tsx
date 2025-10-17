@@ -12,6 +12,8 @@ import PrivacyPolicy from "./pages/PrivacyPolicy";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
 import FloatingActionButton from "./components/FloatingActionButton";
+import Footer from "./components/Footer";
+import Terms from "./pages/Terms";
 
 const queryClient = new QueryClient();
 
@@ -30,9 +32,11 @@ const App = () => (
           <Route path="/about" element={<About />} />
           <Route path="/privacy" element={<PrivacyPolicy />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/terms" element={<Terms />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
+        <Footer />
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>

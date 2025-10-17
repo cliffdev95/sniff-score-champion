@@ -8,9 +8,9 @@ const LoadingAnimation = () => {
         </div>
       </div>
       <div className="text-center space-y-2">
-        <p className="font-heading text-2xl animate-pulse">Detecting Odour Particles...</p>
+        <p className="font-heading text-2xl animate-pulse">Calculating your SniffScore...</p>
         <p className="text-sm text-muted-foreground">
-          Our AI is sniffing your vibes 👃✨
+          Just for fun — making a playful estimate! ✨
         </p>
       </div>
       <div className="flex gap-2">

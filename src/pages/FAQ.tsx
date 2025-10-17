@@ -11,35 +11,35 @@ import {
 const faqs = [
   {
     q: "Can SniffScore actually smell me?",
-    a: "Not yet. Our AI interns are still developing 'Scratch-n-Sniff 2.0'. But we're optimistic about achieving digital olfactory capabilities by 2077!",
+    a: "Not yet. SniffCheck is a playful app and does not actually smell users. Maybe one day in sci-fi future!",
   },
   {
     q: "Does deodorant count as a shower?",
-    a: "Nice try. That's like using cologne to fix procrastination. Deodorant is a supplement, not a replacement. Science says so. Probably.",
+    a: "Deodorant helps but isn't a full replacement for washing. Water and soap are best for cleaning.",
   },
   {
     q: "What if I bathe in perfume?",
-    a: "You'll smell like a fancy candle that's hiding something. Also, your skin will hate you. Just use water and soap like a normal human.",
+    a: "Fragrance can mask odors briefly, but regular bathing with water and soap is healthier for your skin.",
   },
   {
     q: "How can I improve my SniffScore?",
-    a: "Step 1: Water. Step 2: Soap. Step 3: Repeat tomorrow. Revolutionary, we know. We're considering patenting this groundbreaking method.",
+    a: "Try a quick shower, stay hydrated, and maintain good hygiene habits.",
   },
   {
-    q: "Can I challenge my friends to a stink-off?",
-    a: "Yes! We call it 'Survivor: Shower Edition.' Loser buys detergent. Winner gets bragging rights and a functional sense of smell.",
+    q: "Can I challenge my friends to a friendly competition?",
+    a: "Sure — keep it kind and fun. Consider challenges that encourage healthy habits.",
   },
   {
     q: "Is SniffScore backed by real science?",
-    a: "Absolutely! We have a team of imaginary scientists working around the clock. Their credentials are as real as our smell-detection technology.",
+    a: "No. SniffCheck is for entertainment only and not a scientific or medical tool.",
   },
   {
     q: "What's the world record for not showering?",
-    a: "We don't officially track this because we're not monsters. But rumor has it someone named Greg hasn't showered since 2019. Greg, if you're reading this, please bathe.",
+    a: "We don't track that — focus on healthy habits instead!",
   },
   {
     q: "Can pets use SniffScore?",
-    a: "Your dog is judging you, not the other way around. But yes, feel free to calculate their score. Just don't tell them the results.",
+    a: "Pets aren't the intended audience, but you can use the site for fun. Keep pet care in line with veterinarian advice.",
   },
 ];
 

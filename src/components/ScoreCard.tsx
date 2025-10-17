@@ -72,8 +72,8 @@ const ScoreCard = ({ hours, rating, onShare, onPlaySound, isMuted, onToggleMute 
         </div>
 
         <div className="text-center text-xs sm:text-sm text-muted-foreground space-y-1 px-2">
-          <p className="font-medium">✨ Powered by Totally Real SniffAI™ ✨</p>
-          <p className="text-[10px] sm:text-xs italic">Be honest… did you even use soap? 🤔</p>
+          <p className="font-medium">✨ Powered by SniffCheck™ — for fun and laughs ✨</p>
+          <p className="text-[12px] sm:text-sm italic">SniffCheck is for entertainment only and does not represent health or hygiene advice.</p>
         </div>
       </div>
     </Card>

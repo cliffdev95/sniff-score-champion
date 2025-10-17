@@ -15,47 +15,48 @@ interface Rating {
   gradient: string;
 }
 
-const getRating = (hours: number): Rating => {
+  const getRating = (hours: number): Rating => {
+  // Determine a friendly, playful rating based on hours
   if (hours <= 12) {
     return {
       level: "Fresh as a Daisy",
       emoji: "🌸",
-      message: "You're living your best life! Keep up the hygiene game!",
+      message: "Looking fresh! Keep doing what you're doing.",
       gradient: "gradient-fresh"
     };
   } else if (hours <= 24) {
     return {
       level: "Citrus Cloud",
-      emoji: "☁️",
-      message: "Still acceptable in polite society. Barely.",
+      emoji: "🍊",
+      message: "Still tidy and presentable.",
       gradient: "gradient-fresh"
     };
   } else if (hours <= 48) {
     return {
-      level: "Questionable Aura",
-      emoji: "🤔",
-      message: "Your friends are starting to notice. It's shower o'clock!",
+      level: "Playful Breeze",
+      emoji: "💨",
+      message: "Time for a quick refresh soon!",
       gradient: "gradient-funky"
     };
   } else if (hours <= 72) {
     return {
-      level: "Endangered Air Quality",
-      emoji: "🦠",
-      message: "Plants are wilting in your presence. Intervention needed!",
+      level: "Friendly Reminder",
+      emoji: "�",
+      message: "A shower might lift your spirits — and the room!",
       gradient: "gradient-funky"
     };
   } else if (hours <= 120) {
     return {
-      level: "Biohazard Alert",
-      emoji: "🚨",
-      message: "You're a walking ecosystem. Scientists are intrigued.",
+      level: "Legend-in-Training",
+      emoji: "🏅",
+      message: "You're on a long streak. Consider a freshen-up for max vibes.",
       gradient: "gradient-stinky"
     };
   } else {
     return {
-      level: "Nuclear Stank",
-      emoji: "☢️",
-      message: "Congratulations! You've achieved legendary status. Please shower.",
+      level: "Mythical Freshness",
+      emoji: "✨",
+      message: "You've reached legendary status in this game — time for a treat-yourself shower!",
       gradient: "gradient-stinky"
     };
   }
@@ -134,19 +135,19 @@ const SniffCalculator = () => {
       if (random < 0.3) {
         // 30% chance: Fresh (0-24 hours)
         guessedHours = Math.floor(Math.random() * 24) + 1;
-        aiComment = "AI sniffed... and found fresh vibes! 🌸";
+        aiComment = "AI thinks you're fresh! 🌸";
       } else if (random < 0.6) {
-        // 30% chance: Mild funk (24-48 hours)
+        // 30% chance: Mild (24-48 hours)
         guessedHours = Math.floor(Math.random() * 24) + 24;
-        aiComment = "AI's sensors detect a mild funk brewing... 🤔";
+        aiComment = "AI's guess: a mild need-for-refresh soon. 🤔";
       } else if (random < 0.85) {
-        // 25% chance: Getting funky (48-96 hours)
+        // 25% chance: Needs refresh (48-96 hours)
         guessedHours = Math.floor(Math.random() * 48) + 48;
-        aiComment = "AI's algorithm says... it's been a while! 😅";
+        aiComment = "AI's algorithm says... you might enjoy a refresh soon! 😅";
       } else {
-        // 15% chance: Legendary funk (96-168 hours)
+        // 15% chance: Long time since shower (96-168 hours)
         guessedHours = Math.floor(Math.random() * 72) + 96;
-        aiComment = "AI detected LEGENDARY funk levels! 🚨☢️";
+        aiComment = "AI detected legendary time-since-shower! 🚨";
       }
       
       setHours([guessedHours]);
@@ -210,7 +211,7 @@ const SniffCalculator = () => {
             💧 When Did You Last Shower?
           </Label>
           <p className="text-xs sm:text-sm text-muted-foreground">
-            Be honest... your funk depends on it 😜
+            Enter an approximate time (hours or days). Keep it light and fun!
           </p>
         </div>
 
@@ -246,12 +247,12 @@ const SniffCalculator = () => {
             {isAiGuessing ? (
               <>
                 <Zap className="w-4 h-4 sm:w-5 sm:h-5 animate-pulse" />
-                AI is sniffing... 🧠👃
+                AI is thinking... �
               </>
             ) : (
               <>
                 <Sparkles className="w-4 h-4 sm:w-5 sm:h-5" />
-                Guess My Funk (AI Mode)
+                Let the AI Guess (Just for fun)
               </>
             )}
           </Button>
@@ -264,8 +265,8 @@ const SniffCalculator = () => {
           <Label className="text-lg sm:text-xl md:text-2xl font-heading block">
             ⏰ How Long Since Your Last Shower?
           </Label>
-          <p className="text-sm sm:text-base text-muted-foreground px-4">
-            Be honest... we won't judge. Much. 😏
+            <p className="text-sm sm:text-base text-muted-foreground px-4">
+            Be honest — it's all in good fun!
           </p>
         </div>
 
@@ -337,7 +338,7 @@ const SniffCalculator = () => {
             🧼 Calculate My SniffScore
           </Button>
           <p className="text-xs sm:text-sm text-muted-foreground mt-6 italic px-4">
-            Brace yourself for the truth... 🫣
+            Results are playful and for entertainment only.
           </p>
         </div>
       )}

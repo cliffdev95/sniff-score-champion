@@ -36,14 +36,14 @@ const Leaderboard = () => {
     const stored = localStorage.getItem("sniffLeaderboard");
     if (stored) {
       const data = JSON.parse(stored);
-      // Sort by hours descending (highest/funkiest first)
+      // Sort by hours descending (highest time since shower first)
       const sorted = data.sort((a: LeaderboardEntry, b: LeaderboardEntry) => b.hours - a.hours);
       setLeaderboardData(sorted);
     }
   };
 
   const clearLeaderboard = () => {
-    if (confirm("Are you sure you want to clear the leaderboard? This will remove all funky legends! 🧹")) {
+  if (confirm("Are you sure you want to clear the leaderboard? This will remove all entries.")) {
       localStorage.removeItem("sniffLeaderboard");
       setLeaderboardData([]);
     }
@@ -58,10 +58,10 @@ const Leaderboard = () => {
 
   const getRankTitle = (entry: LeaderboardEntry) => {
     const hours = entry.hours;
-    if (hours >= 121) return { title: "Nuclear Stank Legend", badge: "☢️", color: "text-destructive" };
+    if (hours >= 121) return { title: "Mythical Freshness", badge: "✨", color: "text-destructive" };
     if (hours >= 73) return { title: "Biohazard Overlord", badge: "🚨", color: "text-orange-500" };
-    if (hours >= 49) return { title: "Funk Emperor", badge: "🦠", color: "text-yellow-600" };
-    if (hours >= 25) return { title: "Odour Baron", badge: "🤔", color: "text-yellow-500" };
+    if (hours >= 49) return { title: "Legend-in-Training", badge: "🏅", color: "text-yellow-600" };
+    if (hours >= 25) return { title: "Needs Refresh", badge: "💧", color: "text-yellow-500" };
     if (hours >= 13) return { title: "Mild Musk Knight", badge: "☁️", color: "text-blue-400" };
     return { title: "Fresh Champion", badge: "🧼", color: "text-primary" };
   };
@@ -99,7 +99,7 @@ const Leaderboard = () => {
             <div className="text-5xl md:text-7xl mb-4 animate-bounce">🏆</div>
             <h1 className="font-heading text-4xl md:text-6xl bg-gradient-fresh bg-clip-text text-transparent">Hall of Funk</h1>
             <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto px-4">
-              The official leaderboard of legendary odors. Highest scores = longest without shower.
+              The official leaderboard of playful freshness scores. Highest scores = longest time since last shower.
             </p>
             <p className="text-sm md:text-base text-muted-foreground italic px-4">
               🏆 Being #1 isn't always a flex... but it's definitely memorable 😅
@@ -134,7 +134,7 @@ const Leaderboard = () => {
                 <div className="text-6xl md:text-8xl animate-pulse">🤷</div>
                 <h2 className="font-heading text-2xl md:text-3xl">No Funky Legends Yet!</h2>
                 <p className="text-muted-foreground text-base md:text-lg max-w-md mx-auto">
-                  Be the first brave soul to calculate your SniffScore and claim eternal glory on the leaderboard!
+                  Be the first to calculate your SniffScore and have fun on the leaderboard!
                 </p>
                 <Button
                   onClick={() => window.location.href = "/"}
@@ -227,7 +227,7 @@ const Leaderboard = () => {
 
           <div className="text-center p-6 md:p-10 rounded-3xl bg-gradient-funky shadow-glow border-2 border-secondary/30">
             <p className="text-lg md:text-2xl font-heading mb-4">
-              🚿 Ready to Claim Your Throne of Funk?
+                  🚿 Ready to See Your Rank?
             </p>
             <p className="text-sm md:text-base text-foreground/80 mb-6 max-w-md mx-auto">
               Take the test and see where you rank among the legends!

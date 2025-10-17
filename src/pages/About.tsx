@@ -26,12 +26,11 @@ const About = () => {
               <section className="space-y-4">
                 <h2 className="font-heading text-3xl text-primary">What Is SniffCheck?</h2>
                 <p className="text-muted-foreground leading-relaxed">
-                  SniffCheck (aka SniffScore) is a playful web app that rates how funky you might be based on when you last showered. 
-                  Think of it as a digital hygiene report card, minus the actual grading system and plus a whole lot of sass.
+                  SniffCheck (aka SniffScore) is a playful web app that estimates freshness based on when you last showered. 
+                  Think of it as a lighthearted report — for laughs, not for medical advice.
                 </p>
                 <p className="text-muted-foreground leading-relaxed">
-                  Powered by our proprietary "AI Sniff Technology"™ (which is totally real and not made up at all), 
-                  SniffCheck analyzes your shower habits and gives you a score from minty fresh to... well, questionable.
+                  Powered by playful algorithms and a sprinkle of humor, SniffCheck analyzes simple inputs and gives a friendly score.
                 </p>
               </section>
 
@@ -64,7 +63,7 @@ const About = () => {
                     <div>
                       <h3 className="font-semibold mb-1">Spread Joy</h3>
                       <p className="text-sm text-muted-foreground">
-                        We wanted to create something wholesome, shareable, and fun. No drama, just vibes (good ones, unlike your SniffScore).
+                        We wanted to create something wholesome, shareable, and fun. No drama, just positive vibes.
                       </p>
                     </div>
                   </div>
@@ -98,24 +97,21 @@ const About = () => {
                   To make the internet a funnier, fresher place—one calculated SniffScore at a time. 🚿✨
                 </p>
                 <p className="text-muted-foreground leading-relaxed">
-                  We believe laughter is contagious (unlike body odor, hopefully), and that good hygiene should be celebrated with confetti, 
-                  uplifting messages, and maybe a little friendly roasting.
+                  We believe laughter is contagious and that good hygiene can be celebrated with confetti, uplifting messages, and friendly encouragement.
                 </p>
               </section>
 
               <section className="space-y-4">
                 <h2 className="font-heading text-3xl text-primary">Who Made This?</h2>
                 <p className="text-muted-foreground leading-relaxed">
-                  SniffCheck was created by a small team of developers, designers, and hygiene enthusiasts who probably shower more than average 
-                  (we hope). We're passionate about building fun, lighthearted web experiences that bring people together—even if it's just to 
-                  compare who's smelling the least offensive today.
+                  SniffCheck was created by a small team of developers, designers, and hygiene enthusiasts. We're passionate about building fun, lighthearted web experiences that bring people together.
                 </p>
               </section>
 
               <section className="space-y-4 pt-4 border-t-2 border-primary/10">
                 <h2 className="font-heading text-2xl text-primary">Ready to Get Your SniffScore?</h2>
                 <p className="text-muted-foreground leading-relaxed">
-                  Calculate your freshness level, share your results with friends, and remember: a shower a day keeps the stink away!
+                  Calculate your freshness level, share your results with friends, and remember: a shower a day helps you feel your best!
                 </p>
                 <div className="flex flex-wrap gap-4 pt-2">
                   <Link to="/">
@@ -133,7 +129,7 @@ const About = () => {
 
               <section className="text-center py-4">
                 <p className="text-sm text-muted-foreground italic">
-                  Disclaimer: SniffCheck is satire. Please bathe regularly. Your friends will thank you. 💙
+                  Disclaimer: SniffCheck is for entertainment only and does not represent medical advice.
                 </p>
               </section>
             </Card>

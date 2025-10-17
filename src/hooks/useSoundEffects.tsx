@@ -10,10 +10,10 @@ interface SoundEffect {
 const soundEffects: SoundEffect[] = [
   { level: "Fresh as a Daisy", frequency: 800, duration: 300, type: "sparkle" },
   { level: "Citrus Cloud", frequency: 600, duration: 200, type: "sparkle" },
-  { level: "Questionable Aura", frequency: 400, duration: 400, type: "sniff" },
-  { level: "Endangered Air Quality", frequency: 300, duration: 500, type: "sniff" },
-  { level: "Biohazard Alert", frequency: 200, duration: 600, type: "siren" },
-  { level: "Nuclear Stank", frequency: 150, duration: 800, type: "siren" },
+  { level: "Playful Breeze", frequency: 400, duration: 400, type: "sniff" },
+  { level: "Friendly Reminder", frequency: 300, duration: 500, type: "sniff" },
+  { level: "Legend-in-Training", frequency: 200, duration: 600, type: "siren" },
+  { level: "Mythical Freshness", frequency: 150, duration: 800, type: "siren" },
 ];
 
 export const useSoundEffects = () => {

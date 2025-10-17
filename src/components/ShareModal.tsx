@@ -12,7 +12,7 @@ interface ShareModalProps {
 }
 
 const ShareModal = ({ open, onOpenChange, hours, level, emoji }: ShareModalProps) => {
-  const shareText = `I haven't showered in ${hours} hours! My SniffScore: "${level}" ${emoji} 💨\n\nApparently I'm a walking air freshener's nightmare 😷😅\n\nCheck your funk level at SniffScore!`;
+  const shareText = `I haven't showered in ${hours} hours! My SniffScore: "${level}" ${emoji} \n\nHaving fun with SniffCheck — it's just for laughs!\n\nCheck your score at SniffCheck.`;
   const shareUrl = window.location.origin;
 
   const handleTwitterShare = () => {
@@ -23,7 +23,7 @@ const ShareModal = ({ open, onOpenChange, hours, level, emoji }: ShareModalProps
   const handleCopyLink = () => {
     navigator.clipboard.writeText(`${shareText}\n\n${shareUrl}`);
     toast.success("Copied to clipboard! 📋", {
-      description: "Now share your funky score with the world!",
+    description: "Now share your SniffScore with the world!",
     });
   };
 
@@ -63,7 +63,7 @@ const ShareModal = ({ open, onOpenChange, hours, level, emoji }: ShareModalProps
       <DialogContent className="sm:max-w-md border-4 border-primary/30 shadow-glow max-h-[90vh] overflow-y-auto">
         <DialogHeader>
           <DialogTitle className="font-heading text-2xl sm:text-3xl text-center">
-            Share Your Funky Score! 📤
+            Share Your SniffScore 📤
           </DialogTitle>
         </DialogHeader>
         <div className="space-y-4 py-4">
@@ -118,11 +118,21 @@ const ShareModal = ({ open, onOpenChange, hours, level, emoji }: ShareModalProps
               Copy to Clipboard
             </Button>
           </div>
-
-          <p className="text-xs text-center text-muted-foreground animate-fade-in">
-            💡 Share your score and challenge your friends!<br/>
-            <span className="text-[10px]">(They might judge you, but that's the fun part 😅)</span>
+            <p className="text-xs text-center text-muted-foreground animate-fade-in">
+            💡 Share your score and have a laugh with friends!<br/>
+            <span className="text-[10px]">(Keep it friendly and respectful.)</span>
           </p>
+
+          <div className="mt-3">
+            <Button
+              onClick={() => { window.location.href = '/contact'; }}
+              variant="ghost"
+              className="w-full rounded-full font-semibold"
+            >
+              <MessageCircle className="mr-2 h-4 w-4" />
+              Report inappropriate content
+            </Button>
+          </div>
         </div>
       </DialogContent>
     </Dialog>

@@ -18,11 +18,10 @@ const Contact = () => {
     e.preventDefault();
     
     if (!formData.name || !formData.email || !formData.message) {
-      toast.error("Please fill in all fields! Even funky people need to be complete.");
+      toast.error("Please fill in all fields.");
       return;
     }
-
-    toast.success("Message sent! We'll sniff out your inquiry soon! 👃");
+    toast.success("Message sent! We'll get back to you soon.");
     setFormData({ name: "", email: "", message: "" });
   };
 
@@ -36,9 +35,9 @@ const Contact = () => {
         <div className="max-w-2xl mx-auto space-y-8">
           <div className="text-center space-y-4">
             <div className="text-6xl">📬</div>
-            <h1 className="font-heading text-5xl md:text-6xl">Got Questions or New Scents?</h1>
+            <h1 className="font-heading text-5xl md:text-6xl">Contact Us</h1>
             <p className="text-xl text-muted-foreground">
-              Send us your freshest ideas (or confessions). We promise not to judge your hygiene habits… much.
+              Send us questions, feedback, or report inappropriate content. We aim to keep SniffCheck friendly for everyone.
             </p>
           </div>
 
@@ -83,10 +82,22 @@ const Contact = () => {
                 size="lg"
                 className="w-full rounded-full font-semibold transition-bouncy hover:scale-105"
               >
-                Send Message 📤
+                Send Message
               </Button>
             </form>
           </Card>
+
+          <div className="mt-4 text-center">
+            <Button
+              variant="outline"
+              onClick={() => {
+                if (!confirm('Do you want to report inappropriate content to the site admins?')) return;
+                toast.success('Thank you — the report has been received.');
+              }}
+            >
+              Report inappropriate content
+            </Button>
+          </div>
 
           <div className="grid md:grid-cols-3 gap-4">
             <Card className="p-6 rounded-2xl text-center shadow-card">

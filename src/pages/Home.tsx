@@ -19,14 +19,14 @@ const Home = () => {
         <div className="max-w-4xl mx-auto space-y-6 md:space-y-8">
           <div className="text-6xl md:text-8xl animate-bounce">👃💦</div>
           <h1 className="font-heading text-4xl md:text-6xl lg:text-7xl leading-tight px-2">
-            How Funky Are You Today?
+            How Fresh Are You Today?
           </h1>
           <div className="max-w-2xl mx-auto space-y-3 px-4">
             <p className="text-lg md:text-2xl font-semibold text-foreground">
-              SniffScore rates how funky you are based on when you last showered 💦👃
+              SniffScore playfully estimates your freshness based on when you last showered 💦👃
             </p>
             <p className="text-base md:text-xl text-muted-foreground">
-              The longer you've gone without a shower, the higher (and smellier) your score!
+              The longer since your last shower, the higher your score — all in good fun.
             </p>
             <p className="text-sm md:text-base text-muted-foreground italic">
               No actual sniffing involved... yet 😜
@@ -37,7 +37,7 @@ const Home = () => {
             size="lg"
             className="rounded-full text-lg md:text-xl px-6 md:px-8 py-5 md:py-6 font-semibold shadow-bubble transition-bouncy hover:scale-110 w-full sm:w-auto"
           >
-            Calculate My Funk 🧼
+            Calculate My SniffScore 🧼
           </Button>
         </div>
       </section>
@@ -45,7 +45,12 @@ const Home = () => {
       {/* How It Works Section */}
       <section className="container mx-auto px-4 py-8 md:py-12">
         <div className="max-w-3xl mx-auto">
-          <h2 className="font-heading text-3xl md:text-4xl text-center mb-8">How It Works</h2>
+          <p className="text-lg md:text-xl text-muted-foreground text-center mb-6">
+            SniffScore playfully estimates freshness based on when you last showered 💦👃
+          </p>
+          <p className="text-base md:text-lg text-muted-foreground text-center mb-8">
+            The longer since your last shower, the higher your score — all in good fun.
+          </p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div className="text-center p-6 rounded-2xl bg-card border-2 border-primary/20 shadow-card">
               <div className="text-5xl mb-4">1️⃣</div>
@@ -76,9 +81,9 @@ const Home = () => {
       <section id="calculator" className="container mx-auto px-4 py-8 md:py-16">
         <div className="max-w-2xl mx-auto space-y-6 md:space-y-8">
           <div className="text-center space-y-4 px-2">
-            <h2 className="font-heading text-3xl md:text-4xl">Your Funk Level Calculator</h2>
+            <h2 className="font-heading text-3xl md:text-4xl">Your Freshness Calculator</h2>
             <p className="text-base md:text-lg text-muted-foreground">
-              Slide to reveal your destiny... from 'Fresh as a Daisy 🌸' to 'Nuclear Stank ☢️'
+              Slide to reveal your playful freshness level — from 'Fresh as a Daisy 🌸' to 'Mythical Freshness ✨'
             </p>
           </div>
           
@@ -91,10 +96,9 @@ const Home = () => {
         <div className="max-w-3xl mx-auto px-2">
           <div className="p-6 md:p-10 rounded-3xl bg-accent/30 border-4 border-accent shadow-bubble text-center">
             <div className="text-5xl md:text-6xl mb-4">🧪</div>
-            <h2 className="font-heading text-2xl md:text-4xl mb-4">100% Real AI Sniff Technology</h2>
+            <h2 className="font-heading text-2xl md:text-4xl mb-4">100% Playful AI Technology</h2>
             <p className="text-base md:text-lg">
-              SniffScore uses cutting-edge algorithms (and imaginary nanobots) to detect 
-              your aura of freshness. Trust the science.
+              SniffScore uses playful algorithms (and imaginary nanobots) to estimate your freshness. It's just for fun — trust the humor, not the science.
             </p>
           </div>
         </div>

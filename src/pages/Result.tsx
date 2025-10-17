@@ -75,7 +75,7 @@ const Result = () => {
     // For now, show coming soon message
     // In future, could use html2canvas to convert the certificate div to image
     toast.success("Certificate feature coming soon! 🎓", {
-      description: "We're printing your official Stink Certificate!",
+      description: "We're preparing your playful certificate!",
     });
   };
 
@@ -122,7 +122,7 @@ const Result = () => {
                 Your Official SniffScore!
               </h1>
               <p className="text-base sm:text-lg md:text-xl text-foreground/80 font-medium px-4">
-                The results are in... and they're funky! 🧪
+                The results are in — all in good fun! 🎉
               </p>
             </div>
 
@@ -135,15 +135,15 @@ const Result = () => {
                 <h2 className="font-heading text-4xl sm:text-5xl md:text-6xl bg-gradient-fresh bg-clip-text text-transparent">
                   Rank #{ranking}
                 </h2>
-                <p className="text-lg sm:text-xl md:text-2xl font-semibold px-2">
-                  You're the {ranking}{getRankingSuffix(ranking)} funkiest out of {totalPlayers} players!
+                  <p className="text-lg sm:text-xl md:text-2xl font-semibold px-2">
+                  You're ranked #{ranking} out of {totalPlayers} players — great participation!
                 </p>
                 <div className="flex items-center justify-center gap-2 text-sm sm:text-base font-medium bg-accent/20 rounded-full px-4 py-2 mx-auto max-w-fit">
                   <Trophy className="h-5 w-5 text-primary" />
                   <span>
-                    {ranking <= 3 ? "Top 3 Stink Champion! 🎉" : 
-                     ranking <= 10 ? "Top 10 Odor Elite! ⭐" : 
-                     "Certified Funk Master! 💫"}
+                    {ranking <= 3 ? "Top 3 Champion! 🎉" : 
+                     ranking <= 10 ? "Top 10! ⭐" : 
+                     "Certified Legend! 💫"}
                   </span>
                 </div>
               </div>
@@ -169,29 +169,29 @@ const Result = () => {
               <div className="text-center space-y-6">
                 <div className="text-4xl md:text-6xl">🏆</div>
                 <h3 className="font-heading text-2xl md:text-4xl">
-                  OFFICIAL STINK CERTIFICATE
+                  OFFICIAL SNIFFCERTIFICATE
                 </h3>
                 <div className="border-t-2 border-b-2 border-dashed border-primary/30 py-6 space-y-4">
                   <p className="text-lg md:text-xl">This certifies that</p>
                   <p className="font-heading text-3xl md:text-5xl text-primary">
-                    {state.username || "Anonymous Funky Legend"}
+                    {state.username || "Anonymous Player"}
                   </p>
                   <p className="text-lg md:text-xl">has achieved the rank of</p>
                   <p className="font-heading text-2xl md:text-4xl">
                     {state.rating.emoji} {state.rating.level}
                   </p>
                   <p className="text-base md:text-lg text-muted-foreground">
-                    With a legendary {state.hours} hours since last shower
+                    With {state.hours} hours since last shower
                   </p>
                   <p className="text-sm md:text-base font-bold text-primary">
                     Global Rank: #{ranking} of {totalPlayers}
                   </p>
                 </div>
                 <p className="text-xs md:text-sm text-muted-foreground italic">
-                  ✨ Powered by Totally Real SniffAI™ ✨
+                  ✨ Powered by SniffCheck — for entertainment only ✨
                 </p>
                 <p className="text-xs text-muted-foreground">
-                  Remember: This certificate is 100% legitimate and should be framed immediately.
+                  This certificate is a playful keepsake and not an official document.
                 </p>
               </div>
             </Card>
@@ -205,7 +205,7 @@ const Result = () => {
                   className="w-full rounded-full font-semibold transition-bouncy hover:scale-110 shadow-glow text-base sm:text-lg py-6"
                 >
                   <Share2 className="mr-2 h-5 w-5" />
-                  Share My Funk
+                  Share My Score
                 </Button>
                 <Button
                   onClick={() => navigate("/leaderboard")}
@@ -214,7 +214,7 @@ const Result = () => {
                   className="w-full rounded-full font-semibold transition-bouncy hover:scale-110 text-base sm:text-lg py-6"
                 >
                   <Trophy className="mr-2 h-5 w-5" />
-                  Hall of Funk
+                  Leaderboard
                 </Button>
               </div>
               <p className="text-center text-xs sm:text-sm text-muted-foreground italic px-4">
@@ -237,9 +237,9 @@ const Result = () => {
 
             {/* Goofy Footer Message */}
             <div className="text-center space-y-2 text-xs sm:text-sm text-muted-foreground animate-fade-in px-4">
-              <p className="font-medium">🎭 Congratulations on your achievement!</p>
-              <p className="italic">Your friends are probably concerned. Show them this certificate to ease their worries.</p>
-              <p className="text-[10px] sm:text-xs">Disclaimer: Showering is still recommended by 9 out of 10 dentists. And everyone else.</p>
+              <p className="font-medium">🎉 Well done!</p>
+              <p className="italic">Share the fun with friends — keep it kind and lighthearted.</p>
+              <p className="text-[10px] sm:text-xs">Disclaimer: SniffCheck is for entertainment only and does not represent health or hygiene advice.</p>
             </div>
           </div>
         </section>
