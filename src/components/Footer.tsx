@@ -13,6 +13,13 @@ const Footer = () => {
           <Link to="/contact" className="text-sm text-primary hover:underline">Contact Us</Link>
         </div>
       </div>
+      {/* Ezoic ad placeholder - appears on every page via Footer */}
+      <div className="container mx-auto px-4 mt-4 text-center">
+        <div id="ezoic-pub-ad-placeholder-101"></div>
+        <script
+          dangerouslySetInnerHTML={{ __html: `window.ezstandalone = window.ezstandalone || {}; ezstandalone.cmd = ezstandalone.cmd || []; ezstandalone.cmd.push(function () { ezstandalone.showAds(101); });` }}
+        />
+      </div>
     </footer>
   );
 };
